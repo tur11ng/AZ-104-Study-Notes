@@ -8,7 +8,7 @@
 
 * The following image shows how all the tools interact with the same Azure Resource Manager API. The API passes requests to the Azure Resource Manager service, which authenticates and authorizes the requests. Azure Resource Manager then routes the requests to the appropriate resource providers.
 
-![alt text](./0. Prerequisites for Azure administrators/images/0.png)
+![alt text](./res/0-prerequisites-for-azure-administrators/images/0.png)
 
 ### Review Azure resource terminology
 
@@ -136,7 +136,7 @@ A Resource Manager template can contain sections that are expressed using JSON n
 
 Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse.
 
-![alt text](./0. Prerequisites for Azure administrators/images/1.png)
+![alt text](./res/0-prerequisites-for-azure-administrators/images/1.png)
 
 ### Review QuickStart templates
 
@@ -144,7 +144,7 @@ Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to 
 
 ### Interactive lab simulation - templates
 
-![alt text](./0. Prerequisites for Azure administrators/images/2.png)
+![alt text](./res/0-prerequisites-for-azure-administrators/images/2.png)
 
 ## Deploy to multiple Azure environments by using JSON ARM template features
 

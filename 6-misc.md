@@ -91,7 +91,7 @@ az vm restart -g MyResourceGroup -n MyVm
 https://learn.microsoft.com/en-us/cli/azure/
 
 
-## Azure Regions 
+## Azure Zones/Regions/Geography
 
 A region is a geographical area comprising at least one datacenter, but usually multiple. Datacenters are isolated from each other in close proximity & combined nnected via low-latency networks to enable fsster and seamless communication. 
 
