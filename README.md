@@ -23,3 +23,7 @@ Additional Microsoft resources:
   - See [Template Format](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/syntax#template-format)
 - [Configure & Manage Virtual Networking Video](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-104-configure-and-manage-virtual-networking-4-of-5)
 - [Monitor & Backup Azure Resources Video](https://learn.microsoft.com/en-us/shows/exam-readiness-zone/preparing-for-az-104-monitor-and-maintain-azure-resources-5-of-5)
+
+## Resources
+
+https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator/

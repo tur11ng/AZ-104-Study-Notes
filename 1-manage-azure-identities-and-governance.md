@@ -224,8 +224,121 @@ After you create your initiative definition, the next step is to assign the init
 You have your policies defined, your initiative definition created, and your policies assigned to affected resources. The last step is to evaluate the state of compliance for your scoped resources.
 
 ------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 ## Configure role-based access control
+
+### Implement role-based access control
+
+### Create a role definition
+
+![alt text](./res/1-manage-azure-identities-and-governance/images/image-6.png)
+
+The Actions permissions show the Contributor role has all action privileges. The asterisk "*" wildcard means "all." The NotActions permissions narrow the privileges provided by the Actions set, and deny three actions:
+
+* Authorization/*/Delete: Not authorized to delete or remove for "all."
+* Authorization/*/Write: Not authorized to write or change for "all."
+* Authorization/elevateAccess/Action: Not authorized to increase the level or scope of access privileges.
+
+The Contributor role also has two permissions to specify how data can be affected:
+* "NotDataActions": []: No specific actions are listed. Therefore, all actions can affect the data.
+* "AssignableScopes": ["/"]: The role can be assigned for all scopes that affect data.
+
+#### Things to know about role definitions
+
+Review the following characteristics of role definitions:
+
+Azure RBAC provides built-in roles and permissions sets. You can also create custom roles and permissions.
+
+The Owner built-in role has the highest level of access privilege in Azure.
+
+The system subtracts NotActions permissions from Actions permissions to determine the effective permissions for a role.
+
+The AssignableScopes permissions for a role can be management groups, subscriptions, resource groups, or resources.
+
+#### Azure RBAC concepts
+
+| Concept            | Description                                                                                      | Examples                                                     |
+|--------------------|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Security principal | An object that represents something that requests access to resources.                          | User, group, service principal, managed identity             |
+| Role definition    | A set of permissions that lists the allowed operations.                                         | Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions. Some built-in role definitions: Reader, Contributor, Owner, User Access Administrator |
+| Scope              | The boundary for the requested level of access, or "how much" access is granted.                 | Management group, subscription, resource group, resource     |
+| Role assignment    | An assignment attaches a role definition to a security principal at a particular scope.          | - Assign the User Access Administrator role to an admin group scoped to a management group - Assign the Contributor role to a user scoped to a subscription |
+
+#### Things to consider when creating roles
+
+* **Consider using built-in roles**. Review the list of built-in role definitions in Azure RBAC. There are over 100 predefined role definitions to choose from, such as Owner, Backup Operator, Website Contributor, and SQL Security Manager. Built-in roles are defined for several categories of services, tasks, and users, including General, Networking, Storage, Databases, and more.
+
+* **Consider creating custom definitions**. Define your own custom roles to meet specific business scenarios for your organization. You can modify the permissions for a built-in role to meet the specific requirements for your organization. You can also create custom role definitions from scratch.
+
+### Create a role assignment
+
+### Compare Azure roles to Microsoft Entra roles
+
+### Apply role-based access control
+
+### Review fundamental Azure RBAC roles
+
+------------------------------------------------------------------------------------------
+
+## Configure role-based access control
+
+### Implement role-based access control
+
+#### Things to know about Azure RBAC
+
+* Allow an application to access all resources in a resource group.
+* Allow one user to manage VMs in a subscription, and allow another user to manage virtual networks.
+* Allow a database administrator (DBA) group to manage SQL databases in a subscription.
+* Allow a user to manage all resources in a resource group, such as VMs, websites, and subnets.
+
+#### Azure RBAC concepts
+
+| Concept            | Description                                                                                           | Examples                                                                                                                                                      |
+|--------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Security Principal| An object that represents something that requests access to resources.                                | User, group, service principal, managed identity                                                                                                             |
+| Role Definition   | A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions. | Some built-in role definitions: Reader, Contributor, Owner, User Access Administrator                                                                        |
+| Scope             | The boundary for the requested level of access, or "how much" access is granted.                      | Management group, subscription, resource group, resource                                                                                                      |
+| Role Assignment   | An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role. | - Assign the User Access Administrator role to an admin group scoped to a management group - Assign the Contributor role to a user scoped to a subscription |
+
+### Things to consider when using Azure RBAC
+
+As you think about how you can implement roles and scope assignments within your organization, consider these points:
+
+* **Consider your requestors**: Plan your strategy to accommodate for all types of access to your resources. Security principals are created for anything that requests access to your resources. Determine who are the requestors in your organization. Requestors can be internal or external users, groups of users, applications and services, resources, and so on.
+
+* **Consider your roles**: Examine the types of job responsibilities and work scenarios in your organization. Roles are commonly built around the requirements to fulfill job tasks or complete work goals. Certain users like administrators, corporate controllers, and engineers can require a level of access beyond what most users need. Some roles can be defined to provide the same access for all members of a team or department for specific resources or applications.
+
+* **Consider scope of permissions**: Think about how you can ensure security by controlling the scope of permissions for role assignments. Outline the types of permissions and levels of scope that you need to support. You can apply different scope levels for a single role to support requestors in different scenarios.
+
+* **Consider built-in or custom definitions**: Review the built-in role definitions in Azure RBAC. Built-in roles can be used as-is, or adjusted to meet the specific requirements for your organization. You can also create custom role definitions from scratch.
+
+### Create a role definition
+
+![alt text](image-8.png)
+
+#### Things to know about role definitions
+
+* Azure RBAC provides built-in roles and permissions sets. You can also create custom roles and permissions.
+
+* The Owner built-in role has the highest level of access privilege in Azure.
+
+* The system subtracts NotActions permissions from Actions permissions to determine the effective permissions for a role.
+
+* The AssignableScopes permissions for a role can be management groups, subscriptions, resource groups, or resources.
+
+#### Role permissions
+
+| Role name   | Description                                     | Actions permissions   | NotActions permissions                                               |
+|-------------|-------------------------------------------------|-----------------------|-----------------------------------------------------------------------|
+| Owner       | Allow all actions                              | *                     | n/a                                                                   |
+| Contributor | Allow all actions, except write or delete role assignment | *          | - Microsoft.Authorization/*/Delete <br> - Microsoft.Authorization/*/Write <br> - Microsoft.Authorization/elevateAccess/Action |
+| Reader      | Allow all read actions                         | /*/read               | n/a                                                                   |
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+## Create Azure users and groups in Microsoft Entra ID
 
 ### What are user accounts in Microsoft Entra ID?
 
@@ -313,84 +426,28 @@ A federation is more complex. A federation is where you have a trust established
 ![alt text](image-6.png)
 
 ------------------------------------------------------------------------------------------
-
-## Configure role-based access control
-
-### Implement role-based access control
-
-#### Things to know about Azure RBAC
-
-* Allow an application to access all resources in a resource group.
-* Allow one user to manage VMs in a subscription, and allow another user to manage virtual networks.
-* Allow a database administrator (DBA) group to manage SQL databases in a subscription.
-* Allow a user to manage all resources in a resource group, such as VMs, websites, and subnets.
-
-#### Azure RBAC concepts
-
-| Concept            | Description                                                                                           | Examples                                                                                                                                                      |
-|--------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Security Principal| An object that represents something that requests access to resources.                                | User, group, service principal, managed identity                                                                                                             |
-| Role Definition   | A set of permissions that lists the allowed operations. Azure RBAC comes with built-in role definitions, but you can also create your own custom role definitions. | Some built-in role definitions: Reader, Contributor, Owner, User Access Administrator                                                                        |
-| Scope             | The boundary for the requested level of access, or "how much" access is granted.                      | Management group, subscription, resource group, resource                                                                                                      |
-| Role Assignment   | An assignment attaches a role definition to a security principal at a particular scope. Users can grant the access described in a role definition by creating (attaching) an assignment for the role. | - Assign the User Access Administrator role to an admin group scoped to a management group - Assign the Contributor role to a user scoped to a subscription |
-
-### Things to consider when using Azure RBAC
-
-As you think about how you can implement roles and scope assignments within your organization, consider these points:
-
-* **Consider your requestors**: Plan your strategy to accommodate for all types of access to your resources. Security principals are created for anything that requests access to your resources. Determine who are the requestors in your organization. Requestors can be internal or external users, groups of users, applications and services, resources, and so on.
-
-* **Consider your roles**: Examine the types of job responsibilities and work scenarios in your organization. Roles are commonly built around the requirements to fulfill job tasks or complete work goals. Certain users like administrators, corporate controllers, and engineers can require a level of access beyond what most users need. Some roles can be defined to provide the same access for all members of a team or department for specific resources or applications.
-
-* **Consider scope of permissions**: Think about how you can ensure security by controlling the scope of permissions for role assignments. Outline the types of permissions and levels of scope that you need to support. You can apply different scope levels for a single role to support requestors in different scenarios.
-
-* **Consider built-in or custom definitions**: Review the built-in role definitions in Azure RBAC. Built-in roles can be used as-is, or adjusted to meet the specific requirements for your organization. You can also create custom role definitions from scratch.
-
-### Create a role definition
-
-![alt text](image-8.png)
-
-#### Things to know about role definitions
-
-* Azure RBAC provides built-in roles and permissions sets. You can also create custom roles and permissions.
-
-* The Owner built-in role has the highest level of access privilege in Azure.
-
-* The system subtracts NotActions permissions from Actions permissions to determine the effective permissions for a role.
-
-* The AssignableScopes permissions for a role can be management groups, subscriptions, resource groups, or resources.
-
-#### Role permissions
-
-| Role name   | Description                                     | Actions permissions   | NotActions permissions                                               |
-|-------------|-------------------------------------------------|-----------------------|-----------------------------------------------------------------------|
-| Owner       | Allow all actions                              | *                     | n/a                                                                   |
-| Contributor | Allow all actions, except write or delete role assignment | *          | - Microsoft.Authorization/*/Delete <br> - Microsoft.Authorization/*/Write <br> - Microsoft.Authorization/elevateAccess/Action |
-| Reader      | Allow all read actions                         | /*/read               | n/a                                                                   |
-
-------------------------------------------------------------------------------------------
-
-## Create Azure users and groups in Microsoft Entra ID
-
-### What are user accounts in Microsoft Entra ID?
-
-### Exercise - Add and delete users in Microsoft Entra ID
-
-### Manage app and resource access by using Microsoft Entra groups
-
-### Exercise - Assign users to Microsoft Entra groups
-
-### Collaborate by using guest accounts and Microsoft Entra B2B
-
-### Exercise - Give guest users access in Microsoft Entra B2B
-
 ------------------------------------------------------------------------------------------
 
 ## Secure your Azure resources with Azure role-based access control (Azure RBAC)
 
 ### What is Azure RBAC?
 
-### Knowledge check - What is Azure RBAC?
+When it comes to identity and access, most organizations that are considering using the public cloud are concerned about two things:
+
+* **Ensuring that when people leave the organization**, they lose access to resources in the cloud.
+* **Striking the right balance between autonomy and central governance**; for example, giving project teams the ability to create and manage virtual machines in the cloud while centrally controlling the networks those VMs use to communicate with other resources.
+
+#### What's Azure RBAC?
+
+![alt text](./res/1-manage-azure-identities-and-governance/images/image-7.png)
+
+#### How does Azure RBAC work?
+
+To create a role assignment, you need three elements: a security principal, a role definition, and a scope. You can think of these elements as **"who"**, **"what"**, and **"where"**.
+
+1. **Security principal (who)** : A security principal is just a fancy name for a user, group, or application to which you want to grant access.
+2. **Role definition** (what you can do) : A role definition is a collection of permissions. It's sometimes just called a role. A role definition lists the permissions the role can perform, such as read, write, and delete. Roles can be high-level, like Owner, or specific, like Virtual Machine Contributor.
+3. **Scope (where)** : Scope is the level where the access applies. This is helpful if you want to make someone a Website Contributor, but only for one resource group.
 
 ### Exercise - List access using Azure RBAC and the Azure portal
 
@@ -399,10 +456,46 @@ As you think about how you can implement roles and scope assignments within your
 ### Exercise - View activity logs for Azure RBAC changes
 
 ------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 ## Allow users to reset their password with Microsoft Entra self-service password reset
 
 ### Implement Microsoft Entra self-service password reset
+
+#### How SSPR works
+
+The user initiates a password reset either by going directly to the password-reset portal or by selecting the Can't access your account link on a sign-in page. The reset portal takes these steps:
+
+1. **Localization**: The portal checks the browser's locale setting and renders the SSPR page in the appropriate language.
+2. **Verification**: The user enters their username and passes a captcha to ensure that it's a user and not a bot.
+3. **Authentication**: The user enters the required data to authenticate their identity. They might, for example, enter a code or answer security questions.
+4. **Password reset**: If the user passes the authentication tests, they can enter a new password and confirm it.
+5. **Notification**: A message is sent to the user to confirm the reset.
+There are several ways you can customize the SSPR user experience. For example, you can add your company logo to the sign-in page so users know they're in the right place to reset their password.
+
+#### Authenticate a password reset
+
+| Authentication method    | How to register                                                | How to authenticate for a password reset                                                                                 |
+|--------------------------|-----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Mobile app notification  | Install the Microsoft Authenticator app on your mobile device, then register it on the multifactor authentication setup page. | Azure sends a notification to the app, which you can either verify or deny.                                                |
+| Mobile app code          | This method also uses the Authenticator app, and you install and register it in the same way.                              | Enter the code from the app.                                                                                               |
+| Email                    | Provide an email address that's external to Azure and Microsoft 365.                                                        | Azure sends a code to the address, which you enter in the reset wizard.                                                    |
+| Mobile phone             | Provide a mobile phone number.                                                                                              | Azure sends a code to the phone in an SMS message, which you enter in the reset wizard. You can also choose to get an automated call. |
+| Office phone             | Provide a nonmobile phone number.                                                                                            | You receive an automated call to this number and press #.                                                                   |
+| Security questions       | Select questions such as "In what city was your mother born?" and save their responses.                                     | Answer the questions.                                                                                                       |
+
+#### Require the minimum number of authentication methods
+
+**You can specify the minimum number of methods that the user must set up: one or two.** For example, you might enable the mobile app code, email, office phone, and security questions methods and specify a minimum of two methods. Users can then choose the two methods they prefer, like mobile app code and email.
+
+#### Accounts associated with administrator roles
+
+* A strong, two-method authentication policy is always applied to accounts with an administrator role, regardless of your configuration for other users.
+* The security-question method isn't available to accounts associated with an administrator role.
+
+#### License requirements
+
+* In a hybrid situation, where you have Active Directory on-premises and Microsoft Entra ID in the cloud, any password change in the cloud must be written back to the on-premises directory. This writeback support is available in Microsoft Entra ID P1 or P2. It's also available with Microsoft 365 Apps for business.
 
 ### What is self-service password reset in Microsoft Entra ID?
 
