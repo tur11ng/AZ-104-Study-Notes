@@ -1,6 +1,6 @@
 # Manage Azure identities and governance in Azure
 
-## Configure Microsoft Entra ID
+Configure Microsoft Entra ID
 
 ### Describe Microsoft Entra ID benefits and features
 
@@ -138,7 +138,7 @@ https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/cost-mana
 
 #### Things to know about management groups
 
-![alt text](../res/1-manage-azure-identities-and-governance/images/image-5.png)
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 ### Implement Azure policies
 
@@ -213,15 +213,13 @@ You have your policies defined, your initiative definition created, and your pol
 
 ***
 
-***
-
 ## Configure role-based access control
 
 ### Implement role-based access control
 
 ### Create a role definition
 
-![alt text](../res/1-manage-azure-identities-and-governance/images/image-6.png)
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 The Actions permissions show the Contributor role has all action privileges. The asterisk "\*" wildcard means "all." The NotActions permissions narrow the privileges provided by the Actions set, and deny three actions:
 
@@ -301,7 +299,7 @@ As you think about how you can implement roles and scope assignments within your
 
 ### Create a role definition
 
-![alt text](../image-8.png)
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 #### Things to know about role definitions
 
@@ -317,8 +315,6 @@ As you think about how you can implement roles and scope assignments within your
 | Owner       | Allow all actions                                         | \*                  | n/a                                                                                                                                              |
 | Contributor | Allow all actions, except write or delete role assignment | \*                  | <p>- Microsoft.Authorization/<em>/Delete</em><br><em>- Microsoft.Authorization/</em>/Write<br>- Microsoft.Authorization/elevateAccess/Action</p> |
 | Reader      | Allow all read actions                                    | /\*/read            | n/a                                                                                                                                              |
-
-***
 
 ***
 
@@ -373,7 +369,7 @@ az ad user delete
 
 #### Modify the group to use dynamic assignment
 
-![alt text](../image.png)
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 ### Collaborate by using guest accounts and Microsoft Entra B2B
 
@@ -388,27 +384,23 @@ Giving access to external users is much easier than in a federation. You don't n
 
 A federation is more complex. A federation is where you have a trust established with another organization, or a collection of domains, for shared access to a set of resources. You might be using an on-premises identity provider and authorization service like Active Directory Federation Services (AD FS) that has an established trust with Microsoft Entra ID. To get access to resources, all users have to provide their credentials and successfully authenticate against the AD FS server. If you have someone trying to authenticate outside the internal network, you need to set up a web application proxy. The architecture might look something like the following diagram:
 
-![alt text](../image-1.png)
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 ### Exercise - Give guest users access in Microsoft Entra B2B
 
 #### Add guest users to the organization
 
-![](../image-7.png)
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 #### Add guest users to an application
 
-![alt text](../image-2.png)
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-![alt text](../image-3.png)
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
-![alt text](../image-4.png)
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-![alt text](../image-5.png)
-
-![alt text](../image-6.png)
-
-***
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -423,7 +415,7 @@ When it comes to identity and access, most organizations that are considering us
 
 #### What's Azure RBAC?
 
-![alt text](../res/1-manage-azure-identities-and-governance/images/image-7.png)
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
 #### How does Azure RBAC work?
 
@@ -438,8 +430,6 @@ To create a role assignment, you need three elements: a security principal, a ro
 ### Exercise - Grant access using Azure RBAC and the Azure portal
 
 ### Exercise - View activity logs for Azure RBAC changes
-
-***
 
 ***
 
