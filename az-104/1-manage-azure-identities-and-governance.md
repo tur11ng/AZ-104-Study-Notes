@@ -4,7 +4,7 @@
 
 ### Describe Microsoft Entra ID benefits and features
 
-[alt text](../res/1-manage-azure-identities-and-governance/images/image-0.png)
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 ### Describe Microsoft Entra concepts
 
@@ -43,8 +43,6 @@
 ### Implement Microsoft Entra self-service password reset
 
 https://learn.microsoft.com/en-us/entra/identity/authentication/tutorial-enable-sspr
-
-***
 
 ***
 
@@ -87,15 +85,13 @@ Microsoft Entra ID allows your organization to define **two different types of g
 
 ***
 
-***
-
 ## Configure subscriptions
 
 ### Identify Azure regions
 
 ![](../res/1-manage-azure-identities-and-governance/images/image-1.png)
 
-![](../res/1-manage-azure-identities-and-governance/images/image-2.png)
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 #### Things to know about regional pairs
 
@@ -109,9 +105,9 @@ Microsoft Entra ID allows your organization to define **two different types of g
 
 ### Implement Azure subscriptions
 
-![alt text](../res/1-manage-azure-identities-and-governance/images/image-3.png)
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-![alt text](../res/1-manage-azure-identities-and-governance/images/image-4.png)
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 ### Obtain an Azure subscription
 

@@ -7,7 +7,7 @@
 * Azure Resource Manager provides a consistent management layer to perform tasks through Azure PowerShell, Azure CLI, Azure portal, REST API, and client SDKs.
 * The following image shows how all the tools interact with the same Azure Resource Manager API. The API passes requests to the Azure Resource Manager service, which authenticates and authorizes the requests. Azure Resource Manager then routes the requests to the appropriate resource providers.
 
-![alt text](../res/0-prerequisites-for-azure-administrators/images/0.png)
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Review Azure resource terminology
 
@@ -40,7 +40,7 @@
 Remove-AzResourceGroup -Name "ContosoRG01"
 ```
 
-###
+***
 
 ## Introduction to Azure Cloud Shell
 
@@ -61,6 +61,8 @@ Remove-AzResourceGroup -Name "ContosoRG01"
   * You need storage from different regions. You might need to back up and synchronize this content since only one region can have the storage allocated to Azure Cloud Shell.
   * You need to open multiple sessions at the same time. Azure Cloud Shell allows only one instance at time and isn't suitable for concurrent work across multiple subscriptions or tenants
 
+***
+
 ## Introduction to Bash
 
 ### What is Bash?
@@ -75,6 +77,8 @@ Remove-AzResourceGroup -Name "ContosoRG01"
 
 ### Exercise - Use Bash and grep to filter CLI output
 
+***
+
 ## Introduction to PowerShell
 
 ### What is PowerShell?
@@ -84,6 +88,8 @@ Remove-AzResourceGroup -Name "ContosoRG01"
 ### Locate commands
 
 ### Exercise - Locate commands
+
+***
 
 ## Configure resources with Azure Resource Manager templates
 
@@ -130,7 +136,7 @@ A Resource Manager template can contain sections that are expressed using JSON n
 
 Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse.
 
-![alt text](../res/0-prerequisites-for-azure-administrators/images/1.png)
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Review QuickStart templates
 
@@ -138,7 +144,9 @@ Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to 
 
 ### Interactive lab simulation - templates
 
-![alt text](../res/0-prerequisites-for-azure-administrators/images/2.png)
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+***
 
 ## Deploy to multiple Azure environments by using JSON ARM template features
 
