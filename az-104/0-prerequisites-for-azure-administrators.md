@@ -5,18 +5,17 @@
 ### Review Azure Resource Manager benefits
 
 * Azure Resource Manager provides a consistent management layer to perform tasks through Azure PowerShell, Azure CLI, Azure portal, REST API, and client SDKs.
-
 * The following image shows how all the tools interact with the same Azure Resource Manager API. The API passes requests to the Azure Resource Manager service, which authenticates and authorizes the requests. Azure Resource Manager then routes the requests to the appropriate resource providers.
 
-![alt text](./res/0-prerequisites-for-azure-administrators/images/0.png)
+![alt text](../res/0-prerequisites-for-azure-administrators/images/0.png)
 
 ### Review Azure resource terminology
 
 * **Resource** - A manageable item that is available through Azure. Some common resources are a virtual machine, storage account, web app, database, and virtual network, but there are many more.
 * **Resource group** - A container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization.
-    * Resource Groups are at their simplest a logical collection of resources.
+  * Resource Groups are at their simplest a logical collection of resources.
 * **Resource provider** - A service that supplies the resources you can deploy and manage through Resource Manager. Each resource provider offers operations for working with the resources that are deployed. Some common resource providers are Microsoft.Compute, which supplies the virtual machine resource, Microsoft.Storage, which supplies the storage account resource, and Microsoft.Web, which supplies resources related to web apps.
-    * The name of a resource type is in the format: {resource-provider}/{resource-type}.
+  * The name of a resource type is in the format: {resource-provider}/{resource-type}.
 
 ### Create resource groups
 
@@ -32,9 +31,7 @@
 ### Reorganize Azure resources
 
 * When moving resources, both the source group and the target group are locked during the operation. Write and delete operations are blocked on the resource groups until the move completes. This lock means you can't add, update, or delete resources in the resource groups. Locks don't mean the resources aren't available. For example, if you move a virtual machine to a new resource group, an application can still access the virtual machine.
-
 * Before beginning this process be sure to read the [Move operation](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resources-overview) support for resources page. This page details what resources can be moved between resources group, subscriptions, and regions.
-
 * The move operation doesn't support moving resources to new Microsoft Entra tenant.
 
 ### Remove resources and resource groups
@@ -43,16 +40,14 @@
 Remove-AzResourceGroup -Name "ContosoRG01"
 ```
 
-### 
+###
 
-## Introduction to Azure Cloud Shell 
+## Introduction to Azure Cloud Shell
 
 ### What is Azure Cloud Shell?
 
 * Azure Cloud Shell is a command-line environment you can access through your web browser. You can use this environment to manage Azure resources, including VMs, storage, and networking. Just like you do when using the Azure CLI or Azure PowerShell.
-
 * Because Microsoft manages Cloud Shell, you always have access to the most recent versions of the Azure CLI and PowerShell modules right from any browser.
-
 * Azure Cloud Shell also provides cloud storage to persist files such as SSH keys, scripts, and more.
 
 ### How does Azure Cloud Shell work?
@@ -66,7 +61,7 @@ Remove-AzResourceGroup -Name "ContosoRG01"
   * You need storage from different regions. You might need to back up and synchronize this content since only one region can have the storage allocated to Azure Cloud Shell.
   * You need to open multiple sessions at the same time. Azure Cloud Shell allows only one instance at time and isn't suitable for concurrent work across multiple subscriptions or tenants
 
-##  Introduction to Bash 
+## Introduction to Bash
 
 ### What is Bash?
 
@@ -114,7 +109,6 @@ A Resource Manager template can contain sections that are expressed using JSON n
 
 ### Explore the Azure Resource Manager template parameters
 
-
 ```json
 "parameters": {
     "<parameter-name>" : {
@@ -136,7 +130,7 @@ A Resource Manager template can contain sections that are expressed using JSON n
 
 Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. It provides concise syntax, reliable type safety, and support for code reuse.
 
-![alt text](./res/0-prerequisites-for-azure-administrators/images/1.png)
+![alt text](../res/0-prerequisites-for-azure-administrators/images/1.png)
 
 ### Review QuickStart templates
 
@@ -144,13 +138,13 @@ Azure Bicep is a domain-specific language (DSL) that uses declarative syntax to 
 
 ### Interactive lab simulation - templates
 
-![alt text](./res/0-prerequisites-for-azure-administrators/images/2.png)
+![alt text](../res/0-prerequisites-for-azure-administrators/images/2.png)
 
 ## Deploy to multiple Azure environments by using JSON ARM template features
 
 ### Add flexibility to your Azure Resource Manager template by using template functions
 
-* ARM template functions add flexibility to your ARM template by dynamically getting values during deployment. To understand functions, you first need to understand expressions. Expressions are values that are evaluated when the template is deployed. They start and end with brackets [], and can return a string, integer, Boolean, array, or object.
+* ARM template functions add flexibility to your ARM template by dynamically getting values during deployment. To understand functions, you first need to understand expressions. Expressions are values that are evaluated when the template is deployed. They start and end with brackets \[], and can return a string, integer, Boolean, array, or object.
 
 ```json
 "parameters": {
@@ -192,4 +186,3 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile `
   -storagePrefix {your-Prefix}
 ```
-
